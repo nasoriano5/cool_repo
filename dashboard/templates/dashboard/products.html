@@ -1,0 +1,43 @@
+{% extends 'partials/base.html' %}
+{% block title %} Dashboard {% endblock %}
+{%load crispy_forms_tags %} 
+
+{% block content %}
+<div class="container">
+    <div class="card mt-5">
+        <div class="card-header bg-info">
+
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">Product Registration Form</h5>
+            <form method="POST">
+                {% csrf_token %}
+                {{ form| crispy }}
+                <input class="btn btn-info" type="submit" value="Submit">
+            </form>
+        </div>
+    </div>
+</div>
+<div class="container-lg" style="width: 100%;">
+    <table class="table bg-white shadow my-5">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Type</th>
+            <th scope="col">price</th>
+          </tr>
+        </thead>
+        <tbody>
+            {% if products %}
+            {% for products in products %}
+          <tr>
+            <td>{{products.name}}</td>
+            <td>{{products.product_type}}</td>
+            <td>{{products.price}}</td>
+          </tr>
+          {% endfor %}
+          {% endif %}
+        </tbody>
+      </table>
+</div>
+{% endblock %}

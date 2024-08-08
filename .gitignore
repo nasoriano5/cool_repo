@@ -3,3 +3,5 @@
 
 # Ignore other files and directories
 venv/
+
+db.sqlite3
